@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <ToolBar class="fixed" :bgColor="toolBarColor">缴费用户登录</ToolBar>
-        <div class="propertyType">
+        <div class="propertyType" style="margin-top: 1.17333rem;">
             <img class="typeImg" src="../../../static/images/property-payment.png" />
             <div class="typeText">物业缴费</div>
         </div>
@@ -96,7 +96,6 @@ export default {
 }
 
 .propertyType{
-    margin-top: 1.17333rem;
     background: white;
     height: 1.335rem;
     display: flex;

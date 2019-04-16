@@ -3,19 +3,19 @@
         <ToolBar class="fixed" :bgColor="toolBarColor">选择房号</ToolBar>
 
         <div style="margin-top: 1.17333rem;background: white;">
-            <div class="propertySelect">
+            <div class="propertySelect" @click="toFour(1)">
                 <div class="selectUnit">楼栋</div>
-                <div class="selectPlaceHolder">请选择</div>
+                <input class="selectPlaceHolder" placeholder="请选择" v-model="build"/>
                 <img class="selectImg" src="../../../static/images/right.png" />
             </div>
-            <div class="propertySelect">
+            <div class="propertySelect" @click="toFour(2)">
                 <div class="selectUnit">单元</div>
-                <div class="selectPlaceHolder">请选择</div>
+                <input class="selectPlaceHolder" placeholder="请选择" v-model="element"/>
                 <img class="selectImg" src="../../../static/images/right.png" />
             </div>
-            <div class="propertySelect">
+            <div class="propertySelect" @click="toFour(3)">
                 <div class="selectUnit">户号</div>
-                <div class="selectPlaceHolder">请选择</div>
+                <input class="selectPlaceHolder" placeholder="请选择" v-model="account"/>
                 <img class="selectImg" src="../../../static/images/right.png" />
             </div>
         </div>
@@ -35,14 +35,26 @@ export default {
     data(){
         return{
             toolBarColor: '#f7f7f7',
-            unChooceImg: '../../../static/images/unchooce.png'
+            build: '',
+            element: '',
+            account: ''
         }
+    },
+    created() {
+        this.build = sessionStorage.getItem('1')
+        this.element = sessionStorage.getItem('2')
+        this.account = sessionStorage.getItem('3')
     },
     methods: {
         // 跳转缴费项目页面
         toNext: function(){
             let that = this
-            that.$router.push(that.$RM.PaymentDetail)
+            that.$router.push(that.$RM.PropertyFive)
+        },
+        // 选择楼栋信息
+        toFour: function(item){
+            let that = this
+            that.$router.replace({path: that.$RM.PropertyFour, query: {type: item}})
         }
     }
 }
@@ -94,11 +106,12 @@ export default {
 }
 
 .selectPlaceHolder{
-    padding: .35rem 0;
-    color: #cccccc;
     padding-left: .5rem;
     width: 75%;
     text-align: right;
+    border: none;
+    height: 1rem;
+    padding-top: .1rem;
 }
 
 .selectImg{

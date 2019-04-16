@@ -14,11 +14,11 @@
         </div>
 
         <div class="paymentTab">
-            <div class="tabLeft">{{tabLeft}}</div>
-            <div class="tabRight">{{tabRight}}</div>
+            <div :class="typeShow ? 'tabLeft' : 'tabLeftN'" @click="doSwitch(1)">{{tabLeft}}</div>
+            <div :class="typeShow ? 'tabRightN' : 'tabRight'" @click="doSwitch(2)">{{tabRight}}</div>
         </div>
 
-        <div class="paymentDetailTotal">
+        <div class="paymentDetailTotal" v-if="typeShow">
             <div class="totalTop">
                 <div class="paymentTotal">
                     <div class="totalDate">{{detail.detailDate}}</div>
@@ -44,8 +44,20 @@
             </div>
         </div>
 
-        <div class="paymentBtn">
+        <div class="paymentBtn" v-if="typeShow">
             <button class="nextBtn" @click="toPayment">立即缴费</button>
+        </div>
+
+        <div v-else>
+            <ul class="propertyHistory">
+                <li v-for="item in historyList" class="historyList">
+                    <div class="historyLeft">
+                        <div class="historyLeftTop">{{item.addressName}}</div>
+                        <div class="historyLeftBottom">{{item.date}}</div>
+                    </div>
+                    <div class="historyRight">￥{{item.money}}</div>
+                </li>
+            </ul>
         </div>
 
     </div>
@@ -61,8 +73,9 @@ export default {
         return{
             paymentTitle: '缴费项目',
             toolBarColor: '#f7f7f7',
-            addressTitle: '顺德金华花园',
-            addressDetail: '【2栋1单元902】',
+            typeShow: true,
+            addressTitle: '',
+            addressDetail: '',
             username: '*楠',
             phone: '130****5678',
             tabLeft: '待缴费',
@@ -76,16 +89,61 @@ export default {
                 detailSD: '4月水电费',
                 detailTC: '4月停车费',
                 wy: '200.00',
-                sd: '60',
-                tc: '240'
-            }
+                sd: '60.00',
+                tc: '240.00'
+            },
+            historyList: [
+                {
+                    'addressName': '顺德花园一',
+                    'date': '2019-03-10 11:00:00',
+                    'money': '123.00'
+                },
+                {
+                    'addressName': '顺德花园二',
+                    'date': '2019-03-10 11:00:00',
+                    'money': '2344.00'
+                },
+                {
+                    'addressName': '顺德花园三',
+                    'date': '2019-03-10 11:00:00',
+                    'money': '3467.00'
+                },
+                {
+                    'addressName': '顺德花园四',
+                    'date': '2019-03-10 11:00:00',
+                    'money': '294.00'
+                },
+                {
+                    'addressName': '顺德花园五',
+                    'date': '2019-03-10 11:00:00',
+                    'money': '804.00'
+                },
+            ]
         }
     },
+    created() {
+        this.addressTitle = sessionStorage.getItem('addressName')
+        this.addressDetail = '【' + sessionStorage.getItem(1) + sessionStorage.getItem(2)+ sessionStorage.getItem(3) +'】'
+    },
     methods: {
+        // 切换
+        doSwitch: function(e) {
+            let that = this
+            if(e == 1 && !that.typeShow){
+                that.typeShow = true
+            }
+            if(e == 2 && that.typeShow){
+                that.typeShow = false
+            }
+        },
         // 调用微信支付,跳转结果页
         toPayment: function(){
             let that = this
-            that.$router.push(that.$RM.PaymentSuccess)
+            that.$indicator.open()
+            setTimeout(() => {
+                that.$indicator.close()
+                that.$router.push(that.$RM.PaymentSuccess)
+            }, 2000);
         }
     }
 }
@@ -151,7 +209,27 @@ export default {
     border-top-left-radius: .1rem;
 }
 
+.tabLeftN{
+    flex: 1;
+    color: #3da8f6;
+    padding-top: .15rem;
+    border: .02rem solid #3da8f6;
+    border-right: none;
+    border-bottom-left-radius: .1rem;
+    border-top-left-radius: .1rem;
+}
+
 .tabRight{
+    flex: 1;
+    background: #3da8f6;
+    color: white;
+    padding-top: .15rem;
+    border: .01rem solid #3da8f6;
+    border-bottom-right-radius: .1rem;
+    border-top-right-radius: .1rem;
+}
+
+.tabRightN{
     flex: 1;
     color: #3da8f6;
     padding-top: .15rem;
@@ -185,7 +263,7 @@ export default {
 }
 
 .totalArea{
-    color: #eeeeee;
+    color: #a7a7a7;
     margin-top: .1rem;
 }
 
@@ -226,6 +304,35 @@ export default {
     color: white;
     margin-top: .1rem;
     font-size: .4rem;
+}
+
+.propertyHistory{
+    background: white;
+    padding: 0 .3rem;
+    font-size: .4rem;
+}
+
+.historyList{
+    display: flex;
+    padding: .3rem 0;
+    border-bottom: .01rem solid #eeeeee;
+}
+
+.historyLeft{
+    flex: 1;
+}
+
+.historyLeftTop{
+
+}
+
+.historyLeftBottom{
+    color: #a7a7a7;
+    margin-top: .2rem;
+}
+
+.historyRight{
+
 }
 
 </style>

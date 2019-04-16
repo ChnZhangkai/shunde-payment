@@ -277,6 +277,7 @@ export default {
         chooceNext: function(item){
             console.log(item)
             let that = this
+            sessionStorage.setItem('addressName', item.addressName)
             that.$router.push({path: that.$RM.PropertyOne, query: {address: item.addressName + item.addressDetail}})
         },
         // 计算高度

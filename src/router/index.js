@@ -6,11 +6,12 @@ import Router from 'vue-router'
 import PropertyOne from '@/components/property/propertyOne'
 import PropertyTwo from '@/components/property/propertyTwo'
 import PropertyThree from '@/components/property/propertyThree'
+import PropertyFour from '@/components/property/propertyFour'
+import PropertyFive from '@/components/property/propertyFive'
 
 
 import PaymentProtocol from '@/components/property/paymentProtocol'
 import PaymentSuccess from '@/components/property/paymentSuccess'
-import PaymentDetail from '@/components/property/paymentDetail'
 
 
 
@@ -33,16 +34,20 @@ export default new Router({
       component: PropertyThree
     },
     {
+      path: RM.PropertyFour,
+      component: PropertyFour
+    },
+    {
+      path: RM.PropertyFive,
+      component: PropertyFive
+    },
+    {
       path: RM.PaymentProtocol,
       component: PaymentProtocol
     },
     {
       path: RM.PaymentSuccess,
       component: PaymentSuccess
-    },
-    {
-      path: RM.PaymentDetail,
-      component: PaymentDetail
     }
 
   ]
