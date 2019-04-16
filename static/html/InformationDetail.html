@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" class="sharePage">
+  <div data-role="header">
+    <h1>安田资讯</h1>
+  </div>
+  <div data-role="content">
+    <div class="title"></div>
+    <div class="time"></div>
+    <img class='img'>
+    <span class="content"></span>
+  </div>
+</div>
+</body>
+</html>
+<script>
+  $(function() {
+    var id = getUrlParam('informationId');
+    var data = {"id":id}
+    $.ajax({
+      type:"POST",
+      url:"https://wechatapp.antiantech.com/iccs-pre/information/get.htm",
+      contentType:"application/json",
+      dataType:"json",
+      data:JSON.stringify(data),
+      success:function(result){
+        let item = result.records[0]
+        $(".title").html(item.title)
+        $(".time").html(formartDate(new Date(item.relDate),"-",false))
+        $(".img").attr("src", item.imgPath)
+        $(".content").html(item.content)
+      }
+    });
+
+
+    $.ajax({
+      type:"POST",
+      url:"https://wechatapp.antiantech.com/iccs-pre/information/addCount.htm",
+      contentType:"application/json",
+      dataType:"json",
+      data:JSON.stringify(data),
+      success:function(result){
+
+      }
+    });
+
+  });
+
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+
+  function formartDate(date, symbol,time) {
+    if (!date) {
+      return ''
+    }
+    var y = date.getFullYear()
+    var mon = padZero(date.getMonth() + 1, 2)
+    var d = padZero(date.getDate(), 2)
+
+    var h = padZero(date.getHours(), 2)
+    var mi = padZero(date.getMinutes(), 2)
+    var s = padZero(date.getSeconds(), 2)
+    var returnDate = null
+    if (symbol) {
+      returnDate = y + symbol + mon + symbol + d ;
+    } else {
+      returnDate = y + mon + d ;
+    }
+    if(time){
+      return returnDate + ' '+  h + ':' + mi + ':' + s
+    }
+    else{
+      return returnDate
+    }
+  }
+
+  function padZero(num, n) {
+    var len = n - num.toString().length
+    if (len > 0) {
+      return Array(n - num.toString().length + 1).join('0') + num
+    } else {
+      return Array(0).join('0') + num
+    }
+  }
+</script>
+<style>
+  .sharePage .title {
+    font-size: 1rem;
+    color: #333333;
+    font-weight: bold;
+  }
+
+  .sharePage .time {
+    font-size: 0.5rem;
+    color: #999999;
+    margin-top: 0.3rem;
+  }
+
+  .sharePage .img {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+</style>
