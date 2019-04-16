@@ -8,6 +8,8 @@ import PropertyTwo from '@/components/property/propertyTwo'
 import PropertyThree from '@/components/property/propertyThree'
 import PropertyFour from '@/components/property/propertyFour'
 import PropertyFive from '@/components/property/propertyFive'
+import PropertySix from '@/components/property/propertySix'
+
 
 
 import PaymentProtocol from '@/components/property/paymentProtocol'
@@ -40,6 +42,10 @@ export default new Router({
     {
       path: RM.PropertyFive,
       component: PropertyFive
+    },
+    {
+      path: RM.PropertySix,
+      component: PropertySix
     },
     {
       path: RM.PaymentProtocol,

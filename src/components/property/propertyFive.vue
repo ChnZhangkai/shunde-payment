@@ -50,7 +50,7 @@
 
         <div v-else>
             <ul class="propertyHistory">
-                <li v-for="item in historyList" class="historyList">
+                <li v-for="item in historyList" class="historyList" @click="toRecord(item)">
                     <div class="historyLeft">
                         <div class="historyLeftTop">{{item.addressName}}</div>
                         <div class="historyLeftBottom">{{item.date}}</div>
@@ -144,6 +144,11 @@ export default {
                 that.$indicator.close()
                 that.$router.push(that.$RM.PaymentSuccess)
             }, 2000);
+        },
+        // 跳转缴费详情
+        toRecord: function(item){
+            let that = this
+            that.$router.push(that.$RM.PropertySix)
         }
     }
 }
