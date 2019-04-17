@@ -179,10 +179,13 @@ export default {
         // 调用微信支付,跳转结果页
         toPayment: function(){
             let that = this
+
+            sessionStorage.setItem('successMoney', that.detail.detailTotal)
+
             that.$indicator.open()
             setTimeout(() => {
                 that.$indicator.close()
-                that.$router.push(that.$RM.PaymentSuccess)
+                that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'property'}})
             }, 2000);
         },
         // 跳转缴费详情

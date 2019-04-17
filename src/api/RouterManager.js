@@ -6,6 +6,8 @@ const PropertyFour = '/property/propertyFour'
 const PropertyFive = '/property/propertyFive'
 const PropertySix = '/property/propertySix'
 
+const LoanOne = '/property/loanOne'
+
 const PaymentProtocol = '/property/paymentProtocol'
 const PaymentSuccess = '/property/paymentSuccess'
 
@@ -22,6 +24,7 @@ export default{
   PropertyFour,
   PropertyFive,
   PropertySix,
+  LoanOne,
   PaymentProtocol,
   PaymentSuccess
 }

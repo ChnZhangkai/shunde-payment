@@ -24,14 +24,25 @@ export default {
     data(){
         return{
             toolBarColor: '#f7f7f7',
-            paymentMoney: '568.00'
+            paymentMoney: '',
+            businessType: ''
         }
+    },
+    created(){
+        let that = this
+        that.paymentMoney = sessionStorage.getItem('successMoney')
+        that.businessType = that.$route.query.type
     },
     methods: {
         // 支付完成,返回首页
         toPayment: function(){
             let that = this
-            that.$router.push(that.$RM.PropertyOne)
+            if(that.businessType == 'property'){
+                that.$router.push(that.$RM.PropertyOne)
+            }
+            if(that.businessType == 'loan'){
+                that.$router.push(that.$RM.LoanOne)
+            }
         }
     }
 }
