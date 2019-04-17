@@ -3,7 +3,7 @@ const PaymentProtocol = '/paymentProtocol'
 // 支付成功
 const PaymentSuccess = '/paymentSuccess'
 // 物业缴费
-const PropertyOne = '/'
+const PropertyOne = '/property/propertyOne'
 const PropertyTwo = '/property/propertyTwo'
 const PropertyThree = '/property/propertyThree'
 const PropertyFour = '/property/propertyFour'
@@ -30,7 +30,8 @@ const VillagePaySen  = '/village/VillagePaySen';
 const VillagePayThr  = '/village/VillagePayThr';
 const VillageDetails  = '/village/VillageDetails';
 
-
+// 开发测试阶段使用
+const Index = '/'
 
 
 
@@ -59,5 +60,6 @@ export default{
   VillagePay,
   VillagePaySen,
   VillagePayThr,
-  VillageDetails
+  VillageDetails,
+  Index
 }

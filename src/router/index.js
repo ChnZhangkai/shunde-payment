@@ -28,7 +28,8 @@ import VillagePaySen from '@/components/village/VillagePaySen'
 import VillagePayThr from '@/components/village/VillagePayThr'
 import VillageDetails from '@/components/village/VillageDetails'
 
-
+// 开发测试阶段使用
+import Index from '@/components/index'
 
 
 Vue.use(Router);
@@ -36,6 +37,10 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: RM.Index,
+      component: Index
+    },
     {
       path: RM.PaymentProtocol,
       component: PaymentProtocol
