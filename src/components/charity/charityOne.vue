@@ -91,12 +91,6 @@ export default {
                 that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'property'}})
             }, 2000);
         },
-        // 跳转缴费详情
-        toRecord: function(item){
-            let that = this
-            sessionStorage.setItem('paymentRecord', JSON.stringify(item))
-            that.$router.push(that.$RM.PropertySix)
-        },
         // 选择项目
         toSelect: function(){
             let that = this

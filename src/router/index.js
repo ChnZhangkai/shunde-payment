@@ -3,6 +3,9 @@ import RM from '../api/RouterManager'
 import Router from 'vue-router'
 
 //-------------------------顺德缴费app-----------------------
+import PaymentProtocol from '@/components/property/paymentProtocol'
+import PaymentSuccess from '@/components/property/paymentSuccess'
+
 import PropertyOne from '@/components/property/propertyOne'
 import PropertyTwo from '@/components/property/propertyTwo'
 import PropertyThree from '@/components/property/propertyThree'
@@ -11,9 +14,19 @@ import PropertyFive from '@/components/property/propertyFive'
 import PropertySix from '@/components/property/propertySix'
 import LoanOne from '@/components/property/loanOne'
 import CharityOne from '@/components/property/charityOne'
-
-import PaymentProtocol from '@/components/property/paymentProtocol'
-import PaymentSuccess from '@/components/property/paymentSuccess'
+import RepayMoney from '@/components/education/RepayMoney'
+import RepayMoneyItem from '@/components/education/RepayMoneyItem'
+import RepayMoneyItemSen from '@/components/education/RepayMoneyItemSen'
+import BillDetails from '@/components/education/BillDetails'
+import PartyMemberPay from '@/components/partymember/PartyMemberPay'
+import PartyMemberLog from '@/components/partymember/PartyMemberLog'
+import PendingPayment from '@/components/partymember/PendingPayment'
+import PendingPaymentSen from '@/components/partymember/PendingPaymentSen'
+import PartyDetails from '@/components/partymember/PartyDetails'
+import VillagePay from '@/components/village/VillagePay'
+import VillagePaySen from '@/components/village/VillagePaySen'
+import VillagePayThr from '@/components/village/VillagePayThr'
+import VillageDetails from '@/components/village/VillageDetails'
 
 
 
@@ -23,6 +36,14 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: RM.PaymentProtocol,
+      component: PaymentProtocol
+    },
+    {
+      path: RM.PaymentSuccess,
+      component: PaymentSuccess
+    },
     {
       path: RM.PropertyOne,
       component: PropertyOne
@@ -55,13 +76,60 @@ export default new Router({
       path: RM.CharityOne,
       component: CharityOne
     },
+
     {
-      path: RM.PaymentProtocol,
-      component: PaymentProtocol
+      path: RM.RepayMoney,
+      component: RepayMoney
     },
     {
-      path: RM.PaymentSuccess,
-      component: PaymentSuccess
+      path: RM.RepayMoneyItem,
+      component: RepayMoneyItem
+    },
+    {
+      path: RM.RepayMoneyItemSen,
+      component: RepayMoneyItemSen
+    },
+    {
+      path: RM.BillDetails,
+      component: BillDetails
+    },
+
+    {
+      path: RM.PartyMemberPay,
+      component: PartyMemberPay
+    },
+    {
+      path: RM.PartyMemberLog,
+      component: PartyMemberLog
+    },
+    {
+      path: RM.PendingPayment,
+      component: PendingPayment
+    },
+    {
+      path: RM.PendingPaymentSen,
+      component: PendingPaymentSen
+    },
+    {
+      path: RM.PartyDetails,
+      component: PartyDetails
+    },
+
+    {
+      path: RM.VillagePay,
+      component: VillagePay
+    },
+    {
+      path: RM.VillagePaySen,
+      component: VillagePaySen
+    },
+    {
+      path: RM.VillagePayThr,
+      component: VillagePayThr
+    },
+    {
+      path: RM.VillageDetails,
+      component: VillageDetails
     }
 
   ]
