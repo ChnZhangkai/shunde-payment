@@ -25,14 +25,13 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import ToolBar from './ToolBar.vue'
 
 export default {
     components: {ToolBar},
     data(){
         return{
             toolBarColor: '#f7f7f7',
-            unChooceImg: '../../../static/images/unchooce.png'
         }
     },
     methods: {

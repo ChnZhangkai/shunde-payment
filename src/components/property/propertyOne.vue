@@ -32,8 +32,8 @@ export default {
     data(){
         return{
             toolBarColor: '#f7f7f7',
-            unChooceImg: '../../../static/images/unchooce.png',
-            chooceImg: '../../../static/images/chooce.png',
+            unChooceImg: '../../../static/images/unchoose.png',
+            chooceImg: '../../../static/images/choose.png',
             isChooce: false,
             address: ''
         }
@@ -47,11 +47,11 @@ export default {
         // 选中协议
         chooceProtocol: function(){
             let that = this;
-            if(that.unChooceImg === '../../../static/images/unchooce.png'){
+            if(that.unChooceImg === '../../../static/images/unchoose.png'){
                 that.unChooceImg = that.chooceImg
                 that.isChooce = true
             } else {
-                that.unChooceImg = '../../../static/images/unchooce.png'
+                that.unChooceImg = '../../../static/images/unchoose.png'
                 that.isChooce = false
             }
         },

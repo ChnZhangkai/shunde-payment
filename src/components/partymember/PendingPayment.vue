@@ -2,12 +2,12 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">待缴费</span>
     </header>
     <div class="content">
       <div class="top">
-        <img class="img_flag" src="../../static/assets/educationpayment.png">
+        <img class="img_flag" src="../../../static/images/educationpayment.png">
         <span class="school">华南师范大学党委</span>
       </div>
       <div class="partycon">【计算机系党支部】李楠 430525177701055678</div>

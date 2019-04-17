@@ -2,24 +2,24 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">村居缴费</span>
     </header>
     <div class="content">
       <div class="top">
-        <img class="img_flag" src="../../static/assets/village.png">
+        <img class="img_flag" src="../../../static/images/village.png">
         <span class="stu_pay">村居缴费</span>
       </div>
     </div>
 
     <div class="numline">
       <div class="stu_num">缴费类型 <input class="stu_numval" placeholder="请选择"></div>
-      <img class="img_flag1" src="../../static/assets/pgright.png">
+      <img class="img_flag1" src="../../../static/images/right.png">
     </div>
 
     <div class='nameline'>
        <div class="name">缴费单位 <input class="stu_name" placeholder="请选择"/></div>
-       <img class="img_flag1" src="../../static/assets/pgright.png">
+       <img class="img_flag1" src="../../../static/images/right.png">
     </div>
 
     <div class='protocol'>

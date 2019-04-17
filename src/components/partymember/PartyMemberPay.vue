@@ -2,24 +2,24 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">选择机构</span>
     </header>
     <div class="content">
       <div class="top">
-        <img class="img_flag" src="../../static/assets/party.png">
+        <img class="img_flag" src="../../../static/images/party.png">
         <span class="stu_pay">党费缴费</span>
       </div>
     </div>
 
     <div class="numline">
       <div class="stu_num">党员机构 <input class="stu_numval" placeholder="请选择"></div>
-      <img class="img_flag1" src="../../static/assets/pgright.png">
+      <img class="img_flag1" src="../../../static/images/right.png">
     </div>
 
     <div class='nameline'>
        <div class="name">党支部 <input class="stu_name" placeholder="请选择"/></div>
-       <img class="img_flag1" src="../../static/assets/pgright.png">
+       <img class="img_flag1" src="../../../static/images/right.png">
     </div>
 
     <div class='protocol'>

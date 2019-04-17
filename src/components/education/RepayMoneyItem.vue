@@ -2,12 +2,12 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">缴费项目</span>
     </header>
     <div class="content">
       <div class="top">
-        <img class="img_flag" src="../../static/assets/educationpayment.png">
+        <img class="img_flag" src="../../../static/images/educationpayment.png">
         <span class="school">顺德实验中学</span>
       </div>
       <div class="content1">【三年级004班】杨露露 2019000018102</div>
@@ -19,7 +19,7 @@
     </div>
 
     <div class='bookline'>
-      <img class="img_flag1" src="../../static/assets/choose.png">
+      <img class="img_flag1" src="../../../static/images/choose.png">
       <span class="bookcon">2019年下学期书本费</span>
       <span class="amt_flag">￥300.00</span> 
     </div>
@@ -30,7 +30,7 @@
 
 
     <div class='bookline1'>
-      <img class="img_flag1" src="../../static/assets/choose_no.png">
+      <img class="img_flag1" src="../../../static/images/unchoose.png">
       <span class="bookcon">2019年下学期住宿费</span>
       <span class="amt_flag">￥268.00</span> 
     </div>
@@ -40,7 +40,7 @@
     </div>
 
     <div class='bookline1'>
-      <img class="img_flag1" src="../../static/assets/choose_no.png">
+      <img class="img_flag1" src="../../../static/images/unchoose.png">
       <span class="bookcon">2019年下学期生活费</span>
       <span class="amt_flag">￥500.00</span> 
     </div>

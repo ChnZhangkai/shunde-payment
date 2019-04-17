@@ -2,7 +2,7 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">缴费详情</span>
     </header>
     <div class="content">

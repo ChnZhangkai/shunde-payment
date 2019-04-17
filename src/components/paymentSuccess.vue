@@ -3,7 +3,7 @@
         <ToolBar class="fixed" :bgColor="toolBarColor">支付结果</ToolBar>
 
         <div class="paymentSuccess">
-            <img class="successImg" src="../../../static/images/chooce.png" />
+            <img class="successImg" src="../../static/images/choose.png" />
             <div class="successText">支付成功</div>
             <div class="successMoney">￥{{paymentMoney}}</div>
         </div>
@@ -17,7 +17,7 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import ToolBar from './ToolBar.vue'
 
 export default {
     components: {ToolBar},

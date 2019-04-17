@@ -2,12 +2,12 @@
 <template>
   <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
     <header class="text border-bottom">
-      <img src="../../static/assets/back.png" class="left" @click="back"/>
+      <img src="../../../static/images/back.png" class="left" @click="back"/>
       <span class="login">用户登录</span>
     </header>
     <div class="content">
       <div class="top">
-        <img class="img_flag" src="../../static/assets/educationpayment.png">
+        <img class="img_flag" src="../../../static/images/educationpayment.png">
         <span class="stu_pay">学校缴费</span>
       </div>
     </div>
