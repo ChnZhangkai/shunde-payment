@@ -8,7 +8,7 @@
 
         <div class="propertySelect" @click="toSelect">
             <div class="selectUnit">慈善项目</div>
-            <input class="selectPlaceHolder" v-model="address" placeholder="请选择" />
+            <input class="selectPlaceHolder" v-model="charity.charityName" placeholder="请选择" />
             <img class="selectImg" src="../../../static/images/right.png"/>
         </div>
 
@@ -19,8 +19,8 @@
 
         <div class="paymentDetailTotal" v-if="typeShow">
             <div class="propertySelect">
-                <span class="selectPayment">缴费金额</span>
-                <input class="selectMoney" placeholder="请输入缴费金额" v-model="money" />
+                <span class="selectPayment">捐款金额</span>
+                <input class="selectMoney" placeholder="请输入捐款金额" v-model="money" />
                 <span class="moneyUnit">元</span>
             </div>
         </div>
@@ -55,96 +55,18 @@ export default {
             paymentTitle: '慈善缴费',
             toolBarColor: '#f7f7f7',
             typeShow: true,
-            addressTitle: '',
-            addressDetail: '',
-            username: '*楠',
-            phone: '130****5678',
             tabLeft: '待捐款',
             tabRight: '项目详情',
-            detail: {
-                detailDate: '2019年4月物业管理费',
-                detailTotal: '500.00',
-                detailUnit: '2元/平',
-                detailArea: '100平',
-                detailWY: '4月物业费',
-                detailSD: '4月水电费',
-                detailTC: '4月停车费',
-                wy: '200.00',
-                sd: '60.00',
-                tc: '240.00'
-            },
-            historyList: [
-                {
-                    'orderId': '201904170940302030',
-                    'propertyName': '顺德金华物业物业有限公司',
-                    'addressName': '顺德花园一',
-                    'roomId': '2栋1单元902',
-                    'userName': '李楠',
-                    'mobile': '13988776654',
-                    'date': '2019-03-10 11:00:00',
-                    'money': '800.00',
-                    'propertyMoney': '300.00',
-                    'waterMoney': '200.00',
-                    'electricMoney': '300.00'
-                },
-                {
-                    'orderId': '201904150845302234',
-                    'propertyName': '顺德金华物业物业有限公司',
-                    'addressName': '顺德花园二',
-                    'roomId': '3栋1单元302',
-                    'userName': '李楠',
-                    'mobile': '13988776654',
-                    'date': '2019-03-10 11:00:00',
-                    'money': '300.00',
-                    'propertyMoney': '164.50',
-                    'waterMoney': '35.50',
-                    'electricMoney': '100.00'
-                },
-                {
-                    'orderId': '201902111123302030',
-                    'propertyName': '顺德金华物业物业有限公司',
-                    'addressName': '顺德花园三',
-                    'roomId': '6栋1单元605',
-                    'userName': '李楠',
-                    'mobile': '13988776654',
-                    'date': '2019-03-10 11:00:00',
-                    'money': '750.00',
-                    'propertyMoney': '150.00',
-                    'waterMoney': '100.00',
-                    'electricMoney': '500.00'
-                },
-                {
-                    'orderId': '201904170940302030',
-                    'propertyName': '顺德金华物业物业有限公司',
-                    'addressName': '顺德花园四',
-                    'roomId': '2栋2单元303',
-                    'userName': '李楠',
-                    'mobile': '13988776654',
-                    'date': '2019-03-10 11:00:00',
-                    'money': '500.00',
-                    'propertyMoney': '50.00',
-                    'waterMoney': '150.00',
-                    'electricMoney': '300.00'
-                },
-                {
-                    'orderId': '201903170920362030',
-                    'propertyName': '顺德金华物业物业有限公司',
-                    'addressName': '顺德花园五',
-                    'roomId': '1栋3单元102',
-                    'userName': '李楠',
-                    'mobile': '13988776654',
-                    'date': '2019-03-10 11:00:00',
-                    'money': '600.00',
-                    'propertyMoney': '100.00',
-                    'waterMoney': '200.00',
-                    'electricMoney': '300.00'
-                },
-            ]
+            charity: {
+                charityName: ''
+            }
         }
     },
     created() {
-        this.addressTitle = sessionStorage.getItem('addressName')
-        this.addressDetail = '【' + sessionStorage.getItem(1) + sessionStorage.getItem(2)+ sessionStorage.getItem(3) +'】'
+        let charityText = sessionStorage.getItem('charity')
+        if(charityText != null && charityText != undefined){
+            this.charity = JSON.parse(charityText)
+        }
     },
     methods: {
         // 切换
@@ -161,7 +83,7 @@ export default {
         toPayment: function(){
             let that = this
 
-            sessionStorage.setItem('successMoney', that.detail.detailTotal)
+            sessionStorage.setItem('successMoney', that.money)
 
             that.$indicator.open()
             setTimeout(() => {
@@ -177,7 +99,8 @@ export default {
         },
         // 选择项目
         toSelect: function(){
-
+            let that = this
+            that.$router.push({path: that.$RM.PropertyFour, query: {type: 4}})
         }
     }
 }

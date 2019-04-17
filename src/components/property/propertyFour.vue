@@ -12,6 +12,7 @@
         <div :class="searchShow ? 'propertyChooce' : 'propertyChooceTop'">
             <ul>
                 <li class="chooceList" v-for="item in dataList" @click="toTwo(item)">{{item}}</li>
+                <li class="chooceList" v-for="item in datasList" @click="toTwo(item)">{{item.charityName}}</li>
             </ul>
         </div>
 
@@ -39,6 +40,43 @@ export default {
             ],
             accountList: [
                 '101室','102室','103室','201室','202室','203室','301室','302室','303室'
+            ],
+            chartyList: [
+                {
+                    'charityName': '爱心助成才共圆大学梦',
+                    'charityUnit': '顺德慈善产业有限公司',
+                    'contact': '李娜',
+                    'mobile': '13856658998',
+                    'description':'每年9月前,针对本市新录取大学生中,家境贫寒学费筹措确有困难的,由基层慈善会推报一些名额,进行一次性资助'
+                },
+                {
+                    'charityName': '爱心助成才共圆大学梦',
+                    'charityUnit': '顺德慈善产业有限公司',
+                    'contact': '李娜',
+                    'mobile': '13856658998',
+                    'description':'每年9月前,针对本市新录取大学生中,家境贫寒学费筹措确有困难的,由基层慈善会推报一些名额,进行一次性资助'
+                },
+                {
+                    'charityName': '爱心助成才共圆大学梦',
+                    'charityUnit': '顺德慈善产业有限公司',
+                    'contact': '李娜',
+                    'mobile': '13856658998',
+                    'description':'每年9月前,针对本市新录取大学生中,家境贫寒学费筹措确有困难的,由基层慈善会推报一些名额,进行一次性资助'
+                },
+                {
+                    'charityName': '爱心助成才共圆大学梦',
+                    'charityUnit': '顺德慈善产业有限公司',
+                    'contact': '李娜',
+                    'mobile': '13856658998',
+                    'description':'每年9月前,针对本市新录取大学生中,家境贫寒学费筹措确有困难的,由基层慈善会推报一些名额,进行一次性资助'
+                },
+                {
+                    'charityName': '爱心助成才共圆大学梦',
+                    'charityUnit': '顺德慈善产业有限公司',
+                    'contact': '李娜',
+                    'mobile': '13856658998',
+                    'description':'每年9月前,针对本市新录取大学生中,家境贫寒学费筹措确有困难的,由基层慈善会推报一些名额,进行一次性资助'
+                },
             ]
         }
     },
@@ -59,13 +97,23 @@ export default {
             this.dataList = this.accountList
             this.placeHolder = '请输入户号'
         }
+        if(type == 4){
+            this.title = '选择慈善项目'
+            this.datasList = this.chartyList
+            this.placeHolder = '请输入慈善项目名称'
+        }
     },
     methods: {
         // 跳转缴费项目页面
         toTwo: function(item){
             let that = this
-            sessionStorage.setItem(that.chooceType, item)
-            that.$router.replace(that.$RM.PropertyThree)
+            if(that.chooceType == 4){
+                sessionStorage.setItem('charity', JSON.stringify(item))
+                that.$router.replace(that.$RM.CharityOne)
+            }else{
+                sessionStorage.setItem(that.chooceType, item)
+                that.$router.replace(that.$RM.PropertyThree)
+            }
         }
     }
 }
