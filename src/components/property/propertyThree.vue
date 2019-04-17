@@ -49,12 +49,34 @@ export default {
         // 跳转缴费项目页面
         toNext: function(){
             let that = this
+
+            if(!that.doCheckParam()){
+                return;
+            }
+
             that.$router.push(that.$RM.PropertyFive)
         },
         // 选择楼栋信息
         toFour: function(item){
             let that = this
             that.$router.replace({path: that.$RM.PropertyFour, query: {type: item}})
+        },
+        // 校验参数
+        doCheckParam: function(){
+            let that = this
+            if(that.$StringUtils.isEmpty(that.build)){
+                that.$toast('请选择楼栋')
+                return false;
+            }
+            if(that.$StringUtils.isEmpty(that.element)){
+                that.$toast('请选择单元')
+                return false;
+            }
+            if(that.$StringUtils.isEmpty(that.account)){
+                that.$toast('户号')
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -6,9 +6,10 @@
             <div class="typeText">物业缴费</div>
         </div>
 
-        <div class="propertySelect">
+        <div class="propertySelect" @click="toSelect">
             <div class="selectUnit">缴费单位</div>
-            <div class="selectPlaceHolder" @click="toSelect">{{address}}</div>
+            <!-- <div class="selectPlaceHolder" @click="toSelect">{{address}}</div> -->
+            <input class="selectPlaceHolder" v-model="address" placeholder="请选择" />
             <img class="selectImg" src="../../../static/images/right.png"  @click="toSelect"/>
         </div>
 
@@ -35,7 +36,7 @@ export default {
             unChooceImg: '../../../static/images/unchooce.png',
             chooceImg: '../../../static/images/chooce.png',
             isChooce: false,
-            address: '请选择'
+            address: ''
         }
     },
     methods: {
@@ -63,6 +64,10 @@ export default {
         // 下一步
         toNext: function(){
             let that = this
+            if(that.$StringUtils.isEmpty(that.address)){
+                that.$toast("请选择缴费单位");
+                return;
+            }
             if(!that.isChooce){
                 that.$toast("请阅读并勾选《自助缴费协议》");
                 return;
@@ -72,8 +77,8 @@ export default {
     },
     created() {
         let ads = this.$route.query.address == null ? this.address : this.$route.query.address
-        if (ads.length > 12) {
-            ads = ads.substring(0,13) + '...'
+        if (ads.length > 15) {
+            ads = ads.substring(0,15) + '...'
         }
         this.address = ads
     }
@@ -125,11 +130,12 @@ export default {
 }
 
 .selectPlaceHolder{
-    padding: .35rem 0;
-    color: #cccccc;
+    padding: .05rem 0;
     padding-left: .5rem;
     width: 69%;
     text-align: right;
+    border: none;
+    height: 1.1rem;
 }
 
 .selectImg{
