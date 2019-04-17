@@ -9,10 +9,8 @@ import PropertyThree from '@/components/property/propertyThree'
 import PropertyFour from '@/components/property/propertyFour'
 import PropertyFive from '@/components/property/propertyFive'
 import PropertySix from '@/components/property/propertySix'
-
 import LoanOne from '@/components/property/loanOne'
-
-
+import CharityOne from '@/components/property/charityOne'
 
 import PaymentProtocol from '@/components/property/paymentProtocol'
 import PaymentSuccess from '@/components/property/paymentSuccess'
@@ -52,6 +50,10 @@ export default new Router({
     {
       path: RM.LoanOne,
       component: LoanOne
+    },
+    {
+      path: RM.CharityOne,
+      component: CharityOne
     },
     {
       path: RM.PaymentProtocol,
