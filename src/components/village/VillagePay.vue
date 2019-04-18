@@ -1,257 +1,197 @@
 <!--村居缴费首页-->
 <template>
-  <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
-    <header class="text border-bottom">
-      <img src="../../../static/images/back.png" class="left" @click="back"/>
-      <span class="login">村居缴费</span>
-    </header>
-    <div class="content">
-      <div class="top">
-        <img class="img_flag" src="../../../static/images/village.png">
-        <span class="stu_pay">村居缴费</span>
-      </div>
-    </div>
+    <div class="page">
+        <ToolBar class="fixed" :bgColor="toolBarColor">村居缴费</ToolBar>
+        <div class="type_top">
+            <img class="type_img" src="../../../static/images/village.png" />
+            <div class="type_text">村居缴费</div>
+        </div>
 
-    <div class="numline">
-      <div class="stu_num">缴费类型 <input class="stu_numval" placeholder="请选择"></div>
-      <img class="img_flag1" src="../../../static/images/right.png">
-    </div>
+        <div class="type_pay" @click="selectType">
+            <div class="type_title">缴费类型</div>
+            <input class="select_type" v-model="addType" placeholder="请选择" />
+            <img class="select_img" src="../../../static/images/right.png"  @click="selectType"/>
+        </div>
 
-    <div class='nameline'>
-       <div class="name">缴费单位 <input class="stu_name" placeholder="请选择"/></div>
-       <img class="img_flag1" src="../../../static/images/right.png">
-    </div>
+        <div class="unit_pay" @click="selectUnit">
+            <div class="type_title">缴费单位</div>
+            <input class="select_type" v-model="addUnit" placeholder="请选择" />
+            <img class="select_img" src="../../../static/images/right.png"  @click="selectUnit"/>
+        </div>
 
-    <div class='protocol'>
-      <!--复选框-->
-      <label class="show-boxttt">
-        <input type="checkbox" v-model="checked" />
-        <div class="show-box" ></div>
-      </label>
-      <div class='tips'>我已阅读并同意<span @click="toProcol" style="color:#3da8f6">《自助缴费协议》</span></div>
-    </div>
+        <div class="agree_content">
+            <img class="content_img" :src="unChooceImg" @click="chooceProtocol"/>
+            <div class='content_text'>我已阅读并同意<span class="content_unit" @click="toProtocol">《自助缴费协议》</span></div>
+        </div>
 
-    <button class="nextButton">下一步</button>
-  </div>
+        <div class="next_content">
+            <button class="nextButton" @click="toNext">下一步</button>
+        </div>
+    </div>
 </template>
 
 <script>
-  export default{
-    data() {
-      return {
 
-      };
+import ToolBar from '../ToolBar.vue'
+
+export default {
+    components: {ToolBar},
+    data(){
+        return{
+            toolBarColor: '#f7f7f7',
+            unChooceImg: '../../../static/images/unchoose.png',
+            chooceImg: '../../../static/images/choose.png',
+            isChooce: false,
+            addType: '',
+            addUnit: ''
+        }
     },
     methods: {
-      back() {
-        this.$router.go(-1)
-      }
+        // 选择缴费类型
+        selectType() {
+            this.addType="水费";
+        },
+
+        // 选择缴费单位
+        selectUnit() {
+            this.addUnit="大良马路鱼塘002";
+        },
+
+        // 选中协议
+        chooceProtocol() {
+            if(this.unChooceImg === '../../../static/images/unchoose.png'){
+                this.unChooceImg = this.chooceImg
+                this.isChooce = true
+            } else {
+                this.unChooceImg = '../../../static/images/unchoose.png'
+                this.isChooce = false
+            }
+        },
+        // 打开协议
+        toProtocol() {
+            this.$router.push(this.$RM.PaymentProtocol)
+        },
+        // 下一步
+        toNext() {
+            if(this.$StringUtils.isEmpty(this.addType)){
+                this.$toast("请选择缴费类型");
+                return;
+            }
+            if(this.$StringUtils.isEmpty(this.addUnit)){
+                this.$toast("请选择缴费单位");
+                return;
+            }
+            if(!this.isChooce){
+                this.$toast("请阅读并勾选《自助缴费协议》");
+                return;
+            }
+            this.$router.push(this.$RM.VillagePaySen)
+        }
+    },
+    created() {
+        
     }
-  }
+}
 </script>
 
 <style scoped>
-  header {
-    height: 88px;
-    flex-direction: row;
-    position: fixed;
-    margin: auto 0;
-  }
-  .header-block {
-    height: 1.17333rem;
-  }
-  .text {
-    font-size: 28PX;
-    color: #222222;
-    font-weight: bolder;
-    text-align: center;
-    line-height: 1.5rem;
-    position: relative;
-    background-color: #f7f7f7;
-    font-family: serif;
-    height: 8%;
-  }
-  
-  .left {  
-    height: 0.7rem;
-    float: left;
-    margin-left: 0.4rem;
-    margin-top: 0.4rem;
-  }
-  * {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .border-bottom { border-bottom: 1px solid #f7f7f7 }
-  @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .border-bottom { border-bottom: 0.5px solid #f7f7f7 }
-  }
-  @media screen and (-webkit-min-device-pixel-ratio: 3) {
-    .border-bottom { border-bottom: 0.333333px solid #f7f7f7 }
-  }
-  .top {
-    display: flex;
-  }
-  .content {
-    color: #4f4f55;
-    padding: 0 0.4rem;
-    margin-bottom: 0.5rem;
-    background-color: #fff;
-    height: 9%;
-  }
-  .img_flag {
-    width: 0.9rem;
-    height: 0.9rem;
-    margin-top: 0.3rem;
-  }
-  .stu_pay {
-    padding-top: 0.4rem;
-    font-size: 0.5rem;
-    margin-left: 0.3rem;
-    color: #4f4f55;
-  }
 
-  .numline {
-    font-size: 0.48rem;
-    color: #111111;
-    text-align: left;
-    margin-bottom: 0.06rem;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background-color: #fff;
-    height: 9%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding-top: 0.1rem;
-  }
-  .stu_numval {
-    padding-top: -3rem;
-    font-size: 0.5rem;
-    border: 0;
-    padding-bottom: -4.8rem;
-    text-align: right;
-    width: 73%;
-  }
-  .stu_num {
-    font-size: 0.5rem;
-    padding-top: 0.4rem;
-    margin-left: 0.4rem;
-    color: #4f4f55;
-    width: 100%;
-  }
+.page{
+  height: 100%;
+  background: #f5f4fa;
+}
 
-  .img_flag1 {
-    width: 0.3rem;
-    height: 0.6rem;
-    margin-top: 0.45rem;
-    padding-right: 0.4rem;
-  }
-  .nameline {
-    font-size: 0.48rem;
-    color: #111111;
-    text-align: left;
-    margin-bottom: 0.13333rem;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background-color: #fff;
-    height: 9%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
+.fixed {
+  position: fixed;
+  width: 100%;
+  margin-top: 0;
+  top:0;
+  z-index: 2;
+}
 
-  .stu_name {
-    font-size: 0.5rem;
-    border: 0;
-    text-align: right;
-    width: 73%;
-  }
-  .name {
-    font-size: 0.5rem;
-    padding-top: 0.42rem;
-    margin-left: 0.4rem;
-    color: #4f4f55;
-    width: 100%;
-  }
+.type_top{
+  margin-top: 1.17333rem;
+  background: #ffffff;
+  height: 1.335rem;
+  display: flex;
+}
 
-  .protocol {
-    display: flex;
-    margin-top: 0.6rem;
+.type_img{
+  height: .8rem;
+  padding: .3rem;
+}
 
-  }
+.type_text{
+  padding: .45rem 0;
+  font-size: .4rem;
+}
 
-  .protocol .checkbox {
-    width: 30px;
-    height: 30px;
-    margin-top: -0.05rem;
-  }
+.type_pay{
+  background: #ffffff;
+  height: 1.335rem;
+  margin-top: .27rem;
+  display: flex;
+  padding-left: .3rem;
+  font-size: .4rem;
+}
 
-  .protocol .tips {
-    letter-spacing: 0.02667rem;
-    color: #c9c9c9;
-    font-size: 0.4rem;
-    line-height: 0.6rem;
-    margin-left: 0.26667rem;
-  }
+.type_title{
+  padding: .35rem 0;
+}
 
-  label {
-    cursor: pointer;
+.select_type{
+  padding: .05rem 0;
+  padding-left: .5rem;
+  width: 69%;
+  text-align: right;
+  border: none;
+  height: 1.1rem;
+}
 
-  }
+.select_img{
+  height: .45rem;
+  padding: .35rem .3rem;
+}
 
-  label .input {
-    display: none;
-    cursor: pointer;
-  }
-  .show-box {
-    display: none;
-  }
+.unit_pay {
+  background: white;
+  height: 1.335rem;
+  margin-top: 0.02rem;
+  display: flex;
+  padding-left: .3rem;
+  font-size: .4rem;
+}
 
-  .show-boxttt {
-    display: block;
-    top: 0;
-    left: 0;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 9px;
-    border: 1px solid #d8d8d8;
-    background: white;
-    margin-left: 0.4rem;
-  }
+.agree_content{
+  display: flex;
+  padding: .3rem;
+}
 
-  input:checked + .show-box {
-   display: block;
-    content: '';
-    top: 0.02667rem;
-    left: 0.08rem;
-    margin-left: 0.1rem;
-    width: 0.2rem;
-    height: 0.4rem;
-    border: solid #ff6400;
-    border-radius: 6px;
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-    margin-top: -0.4rem;
-  }
+.content_img{
+  height: .4rem;
+  padding-right: .3rem;
+  padding-top: .025rem;
+}
 
-  .nextButton {
-    border: none;
-    border-radius: 6px;
-    height: 88px;
-    width: 92%;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 0.6rem;
-    color: #ffffff;
-    background-color: #3da8f6;
-    margin-left: 0.4rem;
-  }
+.content_text{
+  color: #999999;
+}
+
+.content_unit{
+  color: #3da8f6;
+}
+
+.next_content{
+  text-align: center;
+}
+
+.nextButton{
+  width: 94%;
+  height: 1.07rem;
+  background: #3da8f6;
+  border: none;
+  border-radius: .1rem;
+  color: white;
+}
 
 </style>
