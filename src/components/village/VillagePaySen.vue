@@ -21,7 +21,7 @@
         
         <div class="con_details" v-if="typeShow">
             <ul class="con_top">
-                <li v-for="items in detailList" class="con_lists" @click="">
+                <li v-for="items in detailList" class="con_lists">
                     <div class="payment_total">
                         <div class="total_date">{{items.detailDate}}</div>
                         <div class="total_money">{{items.detailArea}}</div>
@@ -29,15 +29,15 @@
                     <div class="total_area">￥{{items.detailTotal}}</div>
                 </li>
             </ul>
-        </div>
 
-        <div class="payment_btn" v-if="typeShow">合计:￥624.00
-            <button class="nextButton" @click="toPayment">立即缴费</button>
+            <div class="payment_btn">合计:￥{{money}}
+                <button class="nextButton" @click="toNext">立即缴费</button>
+            </div>
         </div>
 
         <div v-else>
             <ul class="con_history">
-                <li v-for="item in historyList" class="con_list" @click="">
+                <li v-for="item in historyList" class="con_list" @click="toPayment">
                     <div class="history_left">
                         <div class="history_top">{{item.addressName}}</div>
                         <div class="history_bottom">{{item.date}}</div>
@@ -66,11 +66,12 @@ export default {
             phone: '130****5678',
             tabLeft: '待缴费',
             tabRight: '缴费记录',
+            money: '624',
             detailList: [
               {
                 detailDate: '2019年4月卫生费',
                 detailTotal: '50.00',
-                detailArea: '1元/平,面积：50平'
+                detailArea: '1元/平,面积：50平',
               },
               {
                 detailDate: '2019年4月水费',
@@ -128,6 +129,18 @@ export default {
         // 跳转缴费详情
         toPayment() {
           this.$router.push(this.$RM.VillageDetails)
+        },
+        // 确认缴费
+        toNext: function(){
+            let that = this
+
+            sessionStorage.setItem('successMoney', that.money)
+
+            that.$indicator.open()
+            setTimeout(() => {
+                that.$indicator.close()
+                that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'village'}})
+            }, 2000);
         }
     }
 }

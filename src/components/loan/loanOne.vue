@@ -8,7 +8,7 @@
 
         <div class="propertyMain">
             <div class="propertySelect">
-                <span class="selectUnit">缴费单位</span>
+                <span class="selectUnit">收款单位</span>
                 <div class="selectPlaceHolder">{{address}}</div>
             </div>
             <div class="propertySelect">

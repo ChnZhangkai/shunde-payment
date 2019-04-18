@@ -157,7 +157,7 @@ export default {
                     'propertyMoney': '100.00',
                     'waterMoney': '200.00',
                     'electricMoney': '300.00'
-                },
+                }
             ]
         }
     },

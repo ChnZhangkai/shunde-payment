@@ -1,11 +1,9 @@
 <!--教育缴费详情页面一-->
 <template>
-  <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
-    <header class="text border-bottom">
-      <img src="../../../static/images/back.png" class="left" @click="back"/>
-      <span class="login">缴费详情</span>
-    </header>
-    <div class="content">
+  <div class="page">
+    <ToolBar class="fixed" :bgColor="toolBarColor">缴费详情</ToolBar>
+
+    <div class="content" style="margin-top: 1.17333rem;">
       <div class="top">￥642.00</div>
       <div class="content1">交易成功</div>
     </div>
@@ -44,8 +42,11 @@
 </template>
 
 <script>
+
+  import ToolBar from '../ToolBar.vue'
   import {Loadmore} from 'mint-ui';
-  export default{
+  export default {
+    components: {ToolBar},
     data() {
       return {
 
@@ -61,15 +62,19 @@
 </script>
 
 <style scoped>
-  header {
-    height: 88px;
-    flex-direction: row;
-    position: fixed;
-    margin: auto 0;
+  .page{
+    height: 100%;
+    background: #f5f4fa;
   }
-  .header-block {
-    height: 1.17333rem;
+
+  .fixed {
+      position: fixed;
+      width: 100%;
+      margin-top: 0;
+      top:0;
+      z-index: 2;
   }
+
   .text {
     font-size: 28PX;
     color: #222222;

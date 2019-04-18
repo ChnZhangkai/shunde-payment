@@ -43,6 +43,12 @@ export default {
             if(that.businessType == 'loan'){
                 that.$router.push(that.$RM.LoanOne)
             }
+            if(that.businessType == 'village'){
+                that.$router.push(that.$RM.VillagePay)
+            }
+            if(that.businessType == 'party'){
+                that.$router.push(that.$RM.PartyMemberPay)
+            }
         }
     }
 }

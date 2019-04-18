@@ -9,7 +9,7 @@
         <div class="propertySelect" @click="toSelect">
             <div class="selectUnit">缴费单位</div>
             <input class="selectPlaceHolder" v-model="address" placeholder="请选择" />
-            <img class="selectImg" src="../../../static/images/right.png"  @click="toSelect"/>
+            <img class="selectImg" src="../../../static/images/right.png"/>
         </div>
 
         <div class="propertyProtocol">
