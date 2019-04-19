@@ -2,11 +2,12 @@
 const PaymentProtocol = '/paymentProtocol'
 // 支付成功
 const PaymentSuccess = '/paymentSuccess'
+// 列表查询
+const PaymentSearch = '/paymentSearch'
 // 物业缴费
 const PropertyOne = '/property/propertyOne'
 const PropertyTwo = '/property/propertyTwo'
 const PropertyThree = '/property/propertyThree'
-const PropertyFour = '/property/propertyFour'
 const PropertyFive = '/property/propertyFive'
 const PropertySix = '/property/propertySix'
 // 贷款缴费
@@ -37,10 +38,10 @@ const Index = '/'
 export default{
   PaymentProtocol,
   PaymentSuccess,
+  PaymentSearch,
   PropertyOne,
   PropertyTwo,
   PropertyThree,
-  PropertyFour,
   PropertyFive,
   PropertySix,
   LoanOne,

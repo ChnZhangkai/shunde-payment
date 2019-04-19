@@ -37,6 +37,7 @@ export default {
         // 支付完成,返回首页
         toPayment: function(){
             let that = this
+            sessionStorage.removeItem('successMoney')
             if(that.businessType == 'property'){
                 that.$router.push(that.$RM.PropertyOne)
             }
@@ -49,6 +50,13 @@ export default {
             if(that.businessType == 'party'){
                 that.$router.push(that.$RM.PartyMemberPay)
             }
+            if(that.businessType == 'repay'){
+                that.$router.push(that.$RM.RepayMoney)
+            }
+            if(that.businessType == 'charity'){
+                that.$router.push(that.$RM.CharityOne)
+            }
+            
         }
     }
 }

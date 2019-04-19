@@ -77,7 +77,7 @@ export default {
         // 选择楼栋信息
         toFour: function(item){
             let that = this
-            that.$router.replace({path: that.$RM.PropertyFour, query: {type: item}})
+            that.$router.replace({path: that.$RM.PaymentSearch, query: {type: item}})
         }
     }
 }

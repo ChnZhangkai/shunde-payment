@@ -5,11 +5,11 @@ import Router from 'vue-router'
 //-------------------------顺德缴费app-----------------------
 import PaymentProtocol from '@/components/paymentProtocol'
 import PaymentSuccess from '@/components/paymentSuccess'
+import PaymentSearch from '@/components/paymentSearch'
 
 import PropertyOne from '@/components/property/propertyOne'
 import PropertyTwo from '@/components/property/propertyTwo'
 import PropertyThree from '@/components/property/propertyThree'
-import PropertyFour from '@/components/property/propertyFour'
 import PropertyFive from '@/components/property/propertyFive'
 import PropertySix from '@/components/property/propertySix'
 import LoanOne from '@/components/loan/loanOne'
@@ -47,6 +47,10 @@ export default new Router({
       component: PaymentSuccess
     },
     {
+      path: RM.PaymentSearch,
+      component: PaymentSearch
+    },
+    {
       path: RM.PropertyOne,
       component: PropertyOne
     },
@@ -57,10 +61,6 @@ export default new Router({
     {
       path: RM.PropertyThree,
       component: PropertyThree
-    },
-    {
-      path: RM.PropertyFour,
-      component: PropertyFour
     },
     {
       path: RM.PropertyFive,

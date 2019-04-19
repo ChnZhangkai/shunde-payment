@@ -96,13 +96,13 @@ export default {
             that.$indicator.open()
             setTimeout(() => {
                 that.$indicator.close()
-                that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'property'}})
+                that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'charity'}})
             }, 2000);
         },
         // 选择项目
         toSelect: function(){
             let that = this
-            that.$router.push({path: that.$RM.PropertyFour, query: {type: 4}})
+            that.$router.push({path: that.$RM.PaymentSearch, query: {type: 4}})
         }
     }
 }

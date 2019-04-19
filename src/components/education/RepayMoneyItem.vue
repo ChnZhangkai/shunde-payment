@@ -33,7 +33,7 @@
             </ul>
         </div>
 
-        <div class="payment_btn" v-if="typeShow">合计:￥300.00
+        <div class="payment_btn" v-if="typeShow">合计:￥{{money}}
             <button class="nextButton" @click="toPayment">立即缴费</button>
         </div>
 
@@ -64,6 +64,7 @@ export default {
             typeShow: true,
             addressTitle: '顺德实验中学',
             addressDetail: '【三年级004班】',
+            money: '300.00',
             username: '杨露露',
             phone: '2019000018102',
             tabLeft: '待缴费',
@@ -157,7 +158,15 @@ export default {
         },
         // 跳转缴费成功
         toPayment() {
-          this.$router.push(this.$RM.PaymentSuccess)
+            let that = this
+
+            sessionStorage.setItem('successMoney', that.money)
+
+            that.$indicator.open()
+            setTimeout(() => {
+                that.$indicator.close()
+                that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'repay'}})
+            }, 2000);
         },
         // 跳转缴费详情
         toRecord(item) {
