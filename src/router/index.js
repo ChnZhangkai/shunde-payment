@@ -3,10 +3,6 @@ import RM from '../api/RouterManager'
 import Router from 'vue-router'
 
 //-------------------------顺德缴费app-----------------------
-import PaymentProtocol from '@/components/paymentProtocol'
-import PaymentSuccess from '@/components/paymentSuccess'
-import PaymentSearch from '@/components/paymentSearch'
-
 import PropertyOne from '@/components/property/propertyOne'
 import PropertyTwo from '@/components/property/propertyTwo'
 import PropertyThree from '@/components/property/propertyThree'
@@ -24,6 +20,10 @@ import PartyDetails from '@/components/partymember/PartyDetails'
 import VillagePay from '@/components/village/VillagePay'
 import VillagePaySen from '@/components/village/VillagePaySen'
 import VillageDetails from '@/components/village/VillageDetails'
+
+import PaymentProtocol from '@/components/paymentProtocol'
+import PaymentSuccess from '@/components/paymentSuccess'
+import PaymentSearch from '@/components/paymentSearch'
 
 // 开发测试阶段使用
 import Index from '@/components/index'
