@@ -30,15 +30,23 @@
         </div>
 
         <div v-else>
-            <!-- <ul class="propertyHistory">
-                <li v-for="item in historyList" class="historyList" @click="toRecord(item)">
-                    <div class="historyLeft">
-                        <div class="historyLeftTop">{{item.addressName}}</div>
-                        <div class="historyLeftBottom">{{item.date}}</div>
-                    </div>
-                    <div class="historyRight">￥{{item.money}}</div>
-                </li>
-            </ul> -->
+            <div class="charityDetails">
+                <span>主办单位</span>
+                <div>{{charity.charityUnit}}</div>
+            </div>
+            <div class="charityDetails">
+                <span>联系人员</span>
+                <div>{{charity.contact}}</div>
+            </div>
+            <div class="charityDetails">
+                <span>联系电话</span>
+                <div>{{charity.mobile}}</div>
+            </div>
+            <div>
+                <span>项目描述</span>
+                <div>{{charity.description}}</div>
+            </div>
+
         </div>
 
     </div>
@@ -308,33 +316,8 @@ export default {
     font-size: .4rem;
 }
 
-.propertyHistory{
-    background: white;
-    padding: 0 .3rem;
-    font-size: .4rem;
-}
-
-.historyList{
+.charityDetails{
     display: flex;
-    padding: .3rem 0;
-    border-bottom: .01rem solid #eeeeee;
-}
-
-.historyLeft{
-    flex: 1;
-}
-
-.historyLeftTop{
-
-}
-
-.historyLeftBottom{
-    color: #a7a7a7;
-    margin-top: .2rem;
-}
-
-.historyRight{
-
 }
 
 </style>
