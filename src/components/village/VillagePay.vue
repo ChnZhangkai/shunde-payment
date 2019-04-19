@@ -1,7 +1,7 @@
 <!--村居缴费首页-->
 <template>
     <div class="page">
-        <ToolBar class="fixed" :bgColor="toolBarColor">村居缴费</ToolBar>
+        <HomeToolBar class="fixed" :bgColor="toolBarColor">村居缴费</HomeToolBar>
         <div class="type_top">
             <img class="type_img" src="../../../static/images/village.png" />
             <div class="type_text">村居缴费</div>
@@ -32,10 +32,10 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import HomeToolBar from '../HomeToolBar.vue'
 
 export default {
-    components: {ToolBar},
+    components: {HomeToolBar},
     data(){
         return{
             toolBarColor: '#f7f7f7',

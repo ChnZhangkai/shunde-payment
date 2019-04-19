@@ -1,7 +1,7 @@
 <!--党费机构选择页面-->
 <template>
   <div class="page">
-    <ToolBar class="fixed" :bgColor="toolBarColor">选择机构</ToolBar>
+    <HomeToolBar class="fixed" :bgColor="toolBarColor">选择机构</HomeToolBar>
 
     <div class="propertyType" style="margin-top: 1.17333rem;">
         <img class="typeImg" src="../../../static/images/party.png" />
@@ -35,10 +35,10 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import HomeToolBar from '../HomeToolBar.vue'
 
 export default {
-  components: {ToolBar},
+  components: {HomeToolBar},
   data() {
     return {
       toolBarColor: '#f7f7f7',

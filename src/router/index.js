@@ -20,7 +20,6 @@ import BillDetails from '@/components/education/BillDetails'
 import PartyMemberPay from '@/components/partymember/PartyMemberPay'
 import PartyMemberLog from '@/components/partymember/PartyMemberLog'
 import PendingPayment from '@/components/partymember/PendingPayment'
-import PendingPaymentSen from '@/components/partymember/PendingPaymentSen'
 import PartyDetails from '@/components/partymember/PartyDetails'
 import VillagePay from '@/components/village/VillagePay'
 import VillagePaySen from '@/components/village/VillagePaySen'
@@ -104,10 +103,6 @@ export default new Router({
     {
       path: RM.PendingPayment,
       component: PendingPayment
-    },
-    {
-      path: RM.PendingPaymentSen,
-      component: PendingPaymentSen
     },
     {
       path: RM.PartyDetails,

@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <ToolBar class="fixed" :bgColor="toolBarColor">缴费用户登录</ToolBar>
+        <HomeToolBar class="fixed" :bgColor="toolBarColor">缴费用户登录</HomeToolBar>
         <div class="propertyType" style="margin-top: 1.17333rem;">
             <img class="typeImg" src="../../../static/images/property-payment.png" />
             <div class="typeText">物业缴费</div>
@@ -25,10 +25,10 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import HomeToolBar from '../HomeToolBar.vue'
 
 export default {
-    components: {ToolBar},
+    components: {HomeToolBar},
     data(){
         return{
             toolBarColor: '#f7f7f7',
