@@ -1,273 +1,361 @@
-<!--教育缴费项目页面一-->
+<!--教育缴费项目页面二-->
 <template>
-  <div style="width: 100%; height: 100%; position: absolute; top: 0px; font-size: 12px; background:#f7f7f7;">
-    <header class="text border-bottom">
-      <img src="../../../static/images/back.png" class="left" @click="back"/>
-      <span class="login">缴费项目</span>
-    </header>
-    <div class="content">
-      <div class="top">
-        <img class="img_flag" src="../../../static/images/educationpayment.png">
-        <span class="school">顺德实验中学</span>
-      </div>
-      <div class="content1">【三年级004班】杨露露 2019000018102</div>
-    </div>
+    <div class="page">
+        <ToolBar class="fixed" :bgColor="toolBarColor">缴费项目</ToolBar>
+        <div class="village_top">
+            <div class="detail_top">
+                <img class="detail_img" src="../../../static/images/person.png" />
+                <div class="detail_title">{{addressTitle}}</div>
+            </div>
+            <div class="detail_con">
+                <span>{{addressDetail}}</span>
+                <span>{{username}}</span>
+                <span>{{phone}}</span>
+            </div>
+        </div>
 
-    <div class="numline">
-      <div class="wait_pay">待缴费</div>
-      <div class="al_pay">缴费记录</div>
-    </div>
+        <div class="payment_tab">
+            <div :class="typeShow ? 'tabLeft' : 'tabLeftN'" @click="doSwitch(1)">{{tabLeft}}</div>
+            <div :class="typeShow ? 'tabRightN' : 'tabRight'" @click="doSwitch(2)">{{tabRight}}</div>
+        </div>
+        
+        <div class="con_details" v-if="typeShow">
+            <ul class="con_top">
+                <li v-for="items in detailList" class="con_lists" @click="">
+                    <div class="payment_total">
+                        <div class="total_date">{{items.detailDate}}</div>
+                        <div class="total_money">{{items.detailArea}}</div>
+                        <div class="total_time">缴费期限：{{items.detailTime}}</div>
+                    </div>
+                    
+                    <div class="total_area">￥{{items.detailTotal}}</div>    
+                </li>
+            </ul>
+        </div>
 
-    <div class='bookline'>
-      <img class="img_flag1" src="../../../static/images/choose.png">
-      <span class="bookcon">2019年下学期书本费</span>
-      <span class="amt_flag">￥300.00</span> 
-    </div>
-    <div class="book_num">这一学期的课本一共12本</div> 
-    <div class="book_row">
-      <div class="book_date">缴费期限：2019-09-01至2019-09-10</div>
-    </div>
+        <div class="payment_btn" v-if="typeShow">合计:￥300.00
+            <button class="nextButton" @click="toPayment">立即缴费</button>
+        </div>
 
+        <div v-else>
+            <ul class="con_history">
+                <li v-for="item in historyList" class="con_list" @click="toRecord(item)">
+                    <div class="history_left">
+                        <div class="history_top">{{item.addressName}}</div>
+                        <div class="history_bottom">{{item.date}}</div>
+                    </div>
+                    <div class="history_right">￥{{item.money}}</div>
+                </li>
+            </ul>
+        </div>
 
-    <div class='bookline1'>
-      <img class="img_flag1" src="../../../static/images/unchoose.png">
-      <span class="bookcon">2019年下学期住宿费</span>
-      <span class="amt_flag">￥268.00</span> 
     </div>
-    <div class="book_num">宿舍8人一间，含水电费用</div> 
-    <div class="book_row">
-      <div class="book_date">缴费期限：2019-09-01至2019-09-10</div>
-    </div>
-
-    <div class='bookline1'>
-      <img class="img_flag1" src="../../../static/images/unchoose.png">
-      <span class="bookcon">2019年下学期生活费</span>
-      <span class="amt_flag">￥500.00</span> 
-    </div>
-    <div class="book_num">学校食堂每日中餐</div> 
-    <div class="book_row">
-      <div class="book_date">缴费期限：2019-09-01至2019-09-10</div>
-    </div>
-
-    <div class="total_amt">合计:￥300.00
-      <button class="nextButton">立即缴费</button>
-    </div>
-
-  </div>
 </template>
 
 <script>
-  import {Loadmore} from 'mint-ui';
-  export default{
-    data() {
-      return {
 
-      };
+import ToolBar from '../ToolBar.vue'
+
+export default {
+    components: {ToolBar},
+    data(){
+        return{
+            toolBarColor: '#f7f7f7',
+            typeShow: true,
+            addressTitle: '顺德实验中学',
+            addressDetail: '【三年级004班】',
+            username: '杨露露',
+            phone: '2019000018102',
+            tabLeft: '待缴费',
+            tabRight: '缴费记录',
+            detailList: [
+              {
+                detailDate: '2019年下学期书本费',
+                detailTotal: '300.00',
+                detailArea: '这一学期的课本一共12本',
+                detailTime: '2019-09-01至2019-09-10'
+              },
+              {
+                detailDate: '2019年下学期住宿费',
+                detailTotal: '268.00',
+                detailArea: '宿舍8人一间，含水电费用',
+                detailTime: '2019-09-01至2019-09-10'
+              },
+              {
+                detailDate: '2019年下学期生活费',
+                detailTotal: '500.00',
+                detailArea: '学校食堂每日中餐',
+                detailTime: '2019-09-01至2019-09-10'
+              }
+            ],
+            historyList: [
+              {
+                'addressName': '顺德实验中学',
+                'money': '568.00',
+                'date': '2019-03-10 12:00:00',
+                'orderId': '201901102343242355',
+                'classId': '三年级4班',
+                'userName': '杨露露',
+                'srudentId': '2019000018102',
+                'roomMoney': '268.00'
+              },
+              {
+                'addressName': '顺德实验中学',
+                'money': '268.00',
+                'date': '2019-03-10 12:00:00',
+                'orderId': '201901102343242355',
+                'classId': '三年级4班',
+                'userName': '杨露露',
+                'srudentId': '2019000018102',
+                'roomMoney': '268.00'
+              },
+              {
+                'addressName': '顺德实验中学',
+                'money': '500.00',
+                'date': '2018-03-10 12:00:00',
+                'orderId': '201901102343242355',
+                'classId': '三年级4班',
+                'userName': '杨露露',
+                'srudentId': '2019000018102',
+                'roomMoney': '268.00'
+              },
+              {
+                'addressName': '顺德实验中学',
+                'money': '300.00',
+                'date': '2018-03-10 12:00:00',
+                'orderId': '201901102343242355',
+                'classId': '三年级4班',
+                'userName': '杨露露',
+                'srudentId': '2019000018102',
+                'roomMoney': '268.00'
+              },
+              {
+                'addressName': '顺德实验中学',
+                'money': '268.00',
+                'date': '2018-03-10 12:00:00',
+                'orderId': '201901102343242355',
+                'classId': '三年级4班',
+                'userName': '杨露露',
+                'srudentId': '2019000018102',
+                'roomMoney': '268.00'
+              }
+            ]
+        }
+    },
+    created() {
+
     },
     methods: {
-      back() {
-        this.$router.go(-1)
-      }
+        // 切换
+        doSwitch(e) {
+            if(e == 1 && !this.typeShow){
+                this.typeShow = true
+            }
+            if(e == 2 && this.typeShow){
+                this.typeShow = false
+            }
+        },
+        // 跳转缴费成功
+        toPayment() {
+          this.$router.push(this.$RM.PaymentSuccess)
+        },
+        // 跳转缴费详情
+        toRecord(item) {
+            sessionStorage.setItem('paymentRecord', JSON.stringify(item))
+            this.$router.push(this.$RM.BillDetails)
+        }
     }
-
-  }
+}
 </script>
 
 <style scoped>
-  header {
-    height: 88px;
-    flex-direction: row;
+
+.page{
+    height: 100%;
+    background: #f5f4fa;
+}
+
+.fixed {
     position: fixed;
-    margin: auto 0;
-  }
-  .header-block {
-    height: 1.17333rem;
-  }
-  .text {
-    font-size: 28PX;
-    color: #222222;
-    font-weight: bolder;
-    text-align: center;
-    line-height: 1.5rem;
-    position: relative;
-    background-color: #f7f7f7;
-    font-family: serif;
-    height: 8%;
-  }
-  .left {  
-    height: 0.7rem;
-    float: left;
-    margin-left: 0.4rem;
-    margin-top: 0.4rem;
-  }
-  * {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .border-bottom { border-bottom: 1px solid #f7f7f7 }
-  @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .border-bottom { border-bottom: 0.5px solid #f7f7f7 }
-  }
-  @media screen and (-webkit-min-device-pixel-ratio: 3) {
-    .border-bottom { border-bottom: 0.333333px solid #f7f7f7 }
-  }
-  .top {
-    display: flex;
-  }
-  .content {
-  /*  margin-top: 0.2rem; */
-    color: #4f4f55;
-    padding: 0 0.4rem;
-    margin-bottom: 0.5rem;
-    background-color: #fff;
-    height: 12%;
-  }
-  .img_flag {
-    width: 0.55rem;
-    height: 0.55rem;
-    margin-top: 0.4rem;
-    margin-left: -0.1rem;
-  }
-  .school {
-    padding-top: 0.3rem;
-    font-size: 0.5rem;
-    margin-left: 0.1rem;
-    color: #4f4f55;
-  }
-
-  .content1 {
-    margin-top: 0.2rem;
-    color: #4f4f55;
-    padding: 0 0.4rem;
-    margin-bottom: 0.5rem;
-    background-color: #fff;
-    font-size: 0.4rem;
-  }
-  .numline {
-    font-size: 0.48rem;
-    color: #111111;
-    text-align: left;
-    margin-bottom: 0.04rem;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    height: 9%;
-    display: flex;
-  }
-
-  .wait_pay {
-    border-radius: 1px;
-    height: 1.15rem;
     width: 100%;
+    margin-top: 0;
+    top:0;
+    z-index: 2;
+}
+
+.village_top{
+    margin-top: 1.17333rem;
+    background: #ffffff;
+    height: 2rem;
+    font-size: .4rem;
+}
+
+.detail_top{
+    display: flex;
+    padding: .4rem 0 .1rem .3rem;
+}
+
+.detail_img{
+    height: .4rem;
+    padding-top: .05rem;
+}
+
+.detail_title{
+    margin-left: .27rem;
+}
+
+.detail_con{
+    padding-left: .8rem;
+}
+
+.payment_tab{
+    display: flex;
+    margin: .3rem 1.6rem;
+    width: 6.5rem;
+    background: #ffffff;
+    height: .8rem;
     text-align: center;
-    font-size: 0.5rem;
-    /* margin-top: 0.6rem; */
+    border-radius: .02rem;
+}
+
+.tabLeft{
+    flex: 1;
+    background: #3da8f6;
     color: #ffffff;
-    background-color: #3da8f6;
-    margin-left: 1.7rem;
-    /* height: 72%; */
-    line-height: 1.1rem;
-  }
+    padding-top: .15rem;
+    border: .01rem solid #3da8f6;
+    border-bottom-left-radius: .1rem;
+    border-top-left-radius: .1rem;
+}
 
-  .al_pay {
-    border-radius: 1px;
-    height: 1.1rem;
+.tabLeftN{
+    flex: 1;
+    color: #3da8f6;
+    padding-top: .15rem;
+    border: .02rem solid #3da8f6;
+    border-right: none;
+    border-bottom-left-radius: .1rem;
+    border-top-left-radius: .1rem;
+}
+
+.tabRight{
+    flex: 1;
+    background: #3da8f6;
+    color: #ffffff;
+    padding-top: .15rem;
+    border: .01rem solid #3da8f6;
+    border-bottom-right-radius: .1rem;
+    border-top-right-radius: .1rem;
+}
+
+.tabRightN{
+    flex: 1;
+    color: #3da8f6;
+    padding-top: .15rem;
+    border: .02rem solid #3da8f6;
+    border-left: none;
+    border-bottom-right-radius: .1rem;
+    border-top-right-radius: .1rem;
+}
+
+.con_details{
+    background: #ffffff;
+    font-size: .4rem;
+}
+
+.con_top{
+    background: #ffffff;
+    font-size: .4rem;
+}
+
+.con_lists{
+    display: flex;
+    padding: .3rem;
+    border-bottom: .4rem solid #eeeeee;
+}
+
+.payment_total{
+    flex: 1;
+}
+
+.total_date{
+   
+}
+
+.total_money{
+    color: #a7a7a7;
+    margin-top: .2rem;
+}
+
+.total_area{
+  
+}
+
+.total_time {
+  color: #a7a7a7;
+  margin-top: .2rem;
+  border-top: 0.03rem solid #eeeeee;
+  padding-top: 0.2rem;
+  width: 124%;
+}
+
+.payment_btn{
+    background: #ffffff;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     text-align: center;
-    font-size: 0.5rem;
-    /* margin-top: 0.6rem; */
-    color: #3da8f6;
-    background-color: #ffffff;
-    /* margin-left: 0.4rem; */
-    margin-right: 1.7rem;
-    line-height: 1.1rem;
-    border: 1px solid #3da8f6;
-  }
+    height: 1.3rem;
+}
 
-  .bookline {
-    font-size: 0.48rem;
-    color: #333333;
-    text-align: left;
-    /* margin-bottom: 0.13333rem; */
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background-color: #fff;
-    height: 7%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.nextButton{
+    width: 94%;
+    height: 1.07rem;
+    background: #3da8f6;
+    border: none;
+    border-radius: .1rem;
+    color: #ffffff;
+    margin-top: .1rem;
+    font-size: .4rem;
+}
+
+.con_history{
+    background: #ffffff;
+    padding: 0 .3rem;
+    font-size: .4rem;
+}
+
+.con_list{
     display: flex;
-  }
+    padding: .3rem 0;
+    border-bottom: .01rem solid #eeeeee;
+}
 
-  .img_flag1 {
-    width: 0.55rem;
-    height: 0.55rem;
-    margin-top: 0.4rem;
-    margin-left: 0.3rem;
-  }
+.history_left{
+    flex: 1;
+}
 
-  .bookcon{
-    text-align: left;
-    margin-left: -2.1rem;
-    margin-top: 0.3rem;
-  }
+.history_top{
 
-  .amt_flag{
-    text-align: right;
-    margin-right: 0.3rem;
-    margin-top: 0.3rem;
-  }
+}
 
-  .book_num{
-    font-size: 0.4rem;
-    /* margin-left: 1rem; */
-    background-color: #ffffff;
-    /* inline-size: -webkit-fill-available; */
-    /* margin-left: 1rem; */
-    padding-left: 1rem;
-    padding-bottom: 0.3rem;
+.history_bottom{
     color: #a7a7a7;
-  }
+    margin-top: .2rem;
+}
 
-  .book_row{
-    margin-top: 0.06rem;
-  }
-  .book_date{
-    font-size: 0.4rem;
-    /* margin-left: 1rem; */
-    background-color: #ffffff;
-    /* inline-size: -webkit-fill-available; */
-    /* margin-left: 1rem; */
-    padding-left: 1rem;
-    padding-bottom: 0.3rem;
-    color: #a7a7a7;
-    padding-top: 0.2rem;
-  }
+.history_right{
+    margin-top: 0.3rem;
+}
 
-  .bookline1 {
+.payment_btn {
     font-size: 0.48rem;
     color: #333333;
     text-align: left;
-    /* margin-bottom: 0.13333rem; */
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background-color: #fff;
-    height: 7%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 0.4rem;
-  }
-
-  .total_amt {
-    font-size: 0.48rem;
-    color: #333333;
-    text-align: left;
-    margin-left: 0.4rem;
+    background-color: #ffffff;
+    padding-left: 0.4rem;
+    margin-top: 3.1rem;
+    padding-bottom: .7rem;
   }
 
   .nextButton {
@@ -282,9 +370,5 @@
     background-color: #3da8f6;
     margin-left: 2.0rem;
   }
-
-
-
- 
 
 </style>
