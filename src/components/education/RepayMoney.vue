@@ -1,7 +1,7 @@
 <!--教育缴费首页-->
 <template>
     <div class="page">
-        <ToolBar class="fixed" :bgColor="toolBarColor">用户登录</ToolBar>
+        <HomeToolBar class="fixed" :bgColor="toolBarColor">用户登录</HomeToolBar>
         <div class="type_top">
             <img class="type_img" src="../../../static/images/educationpayment.png" />
             <div class="type_text">学校缴费</div>
@@ -30,10 +30,10 @@
 
 <script>
 
-import ToolBar from '../ToolBar.vue'
+import HomeToolBar from '../HomeToolBar.vue'
 
 export default {
-    components: {ToolBar},
+    components: {HomeToolBar},
     data(){
         return{
             toolBarColor: '#f7f7f7',

@@ -21,7 +21,6 @@ const BillDetails = '/education/BillDetails';
 const PartyMemberPay  = '/partymember/PartyMemberPay';
 const PartyMemberLog  = '/partymember/PartyMemberLog';
 const PendingPayment  = '/partymember/PendingPayment';
-const PendingPaymentSen  = '/partymember/PendingPaymentSen';
 const PartyDetails  = '/partymember/PartyDetails';
 // 村居缴费
 const VillagePay  = '/village/VillagePay';
@@ -52,7 +51,6 @@ export default{
   PartyMemberPay,
   PartyMemberLog,
   PendingPayment,
-  PendingPaymentSen,
   PartyDetails,
   VillagePay,
   VillagePaySen,
