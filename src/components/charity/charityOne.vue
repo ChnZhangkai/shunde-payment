@@ -6,7 +6,7 @@
             <div class="typeText">慈善缴费</div>
         </div>
 
-        <div class="propertySelect" @click="toSelect">
+        <div class="propertySelect selectTop" @click="toSelect">
             <div class="selectUnit">慈善项目</div>
             <input class="selectPlaceHolder" v-model="charity.charityName" placeholder="请选择" />
             <img class="selectImg" src="../../../static/images/right.png"/>
@@ -29,22 +29,22 @@
             <button class="nextBtn" @click="toPayment">立即捐款</button>
         </div>
 
-        <div v-else>
-            <div class="charityDetails">
-                <span>主办单位</span>
-                <div>{{charity.charityUnit}}</div>
+        <div v-else class="charityRecord">
+            <div class="propertySelect">
+                <span class="selectPayment">主办单位</span>
+                <div class="selectPlaceHolder2">{{charity.charityUnit}}</div>
             </div>
-            <div class="charityDetails">
-                <span>联系人员</span>
-                <div>{{charity.contact}}</div>
+            <div class="propertySelect">
+                <span class="selectPayment">联系人员</span>
+                <div class="selectPlaceHolder2">{{charity.contact}}</div>
             </div>
-            <div class="charityDetails">
-                <span>联系电话</span>
-                <div>{{charity.mobile}}</div>
+            <div class="propertySelect">
+                <span class="selectPayment">联系电话</span>
+                <div class="selectPlaceHolder2">{{charity.mobile}}</div>
             </div>
-            <div>
-                <span>项目描述</span>
-                <div>{{charity.description}}</div>
+            <div class="description">
+                <span class="descriptionTitle">项目描述</span>
+                <div class="descriptionText">{{charity.description}}</div>
             </div>
 
         </div>
@@ -142,10 +142,10 @@ export default {
 .propertySelect{
     background: white;
     height: 1.335rem;
-    margin-top: .4rem;
     display: flex;
     padding-left: .3rem;
     font-size: .4rem;
+    border-bottom: .01rem solid #eeeeee;
 }
 
 .selectUnit{
@@ -156,6 +156,15 @@ export default {
     padding: .05rem 0;
     padding-left: .5rem;
     width: 69%;
+    text-align: right;
+    border: none;
+    height: 1.1rem;
+}
+
+.selectPlaceHolder2{
+    padding: .4rem 0;
+    padding-left: .5rem;
+    width: 75%;
     text-align: right;
     border: none;
     height: 1.1rem;
@@ -318,6 +327,30 @@ export default {
 
 .charityDetails{
     display: flex;
+}
+
+.charityRecord{
+    margin-top: .4rem;
+    background: white;
+}
+
+.description{
+    margin-top: .4rem;
+    background: white;
+    font-size: .4rem;
+    padding: 0 .3rem .3rem.3rem;
+}
+
+.descriptionTitle{
+
+}
+
+.descriptionText{
+    padding-top: .3rem;
+}
+
+.selectTop{
+    margin-top: .3rem;
 }
 
 </style>
