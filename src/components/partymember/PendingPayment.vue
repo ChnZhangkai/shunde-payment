@@ -56,12 +56,13 @@
         money: '',
         historyList: [
           {
-              'orderId': '201904170940302030',
-              'department': '顺德金华物业物业有限公司',
-              'addressName': '顺德花园一',
+              'orderId': '201901102343242355',
+              'department': '华南师范大学党委',
+              'addressName': '第一党支部',
               'roomId': '2栋1单元902',
               'userName': '李楠',
               'mobile': '13988776654',
+              'idCard': '430525177701055678',
               'date': '2019-03-10 11:00:00',
               'money': '800.00',
               'propertyMoney': '300.00',
@@ -69,12 +70,13 @@
               'electricMoney': '300.00'
           },
           {
-              'orderId': '201904150845302234',
-              'department': '顺德金华物业物业有限公司',
-              'addressName': '顺德花园二',
-              'roomId': '3栋1单元302',
+              'orderId': '201901102343242355',
+              'department': '华南师范大学党委',
+              'addressName': '第一党支部',
+              'roomId': '2栋1单元902',
               'userName': '李楠',
               'mobile': '13988776654',
+              'idCard': '430525177701055678',
               'date': '2019-03-10 11:00:00',
               'money': '300.00',
               'propertyMoney': '164.50',
@@ -82,12 +84,13 @@
               'electricMoney': '100.00'
           },
           {
-              'orderId': '201902111123302030',
-              'department': '顺德金华物业物业有限公司',
-              'addressName': '顺德花园三',
-              'roomId': '6栋1单元605',
+             'orderId': '201901102343242355',
+              'department': '华南师范大学党委',
+              'addressName': '第一党支部',
+              'roomId': '2栋1单元902',
               'userName': '李楠',
               'mobile': '13988776654',
+              'idCard': '430525177701055678',
               'date': '2019-03-10 11:00:00',
               'money': '750.00',
               'propertyMoney': '150.00',
@@ -95,12 +98,13 @@
               'electricMoney': '500.00'
           },
           {
-              'orderId': '201904170940302030',
-              'department': '顺德金华物业物业有限公司',
-              'addressName': '顺德花园四',
-              'roomId': '2栋2单元303',
+              'orderId': '201901102343242355',
+              'department': '华南师范大学党委',
+              'addressName': '第一党支部',
+              'roomId': '2栋1单元902',
               'userName': '李楠',
               'mobile': '13988776654',
+              'idCard': '430525177701055678',
               'date': '2019-03-10 11:00:00',
               'money': '500.00',
               'propertyMoney': '50.00',
@@ -108,12 +112,13 @@
               'electricMoney': '300.00'
           },
           {
-              'orderId': '201903170920362030',
-              'department': '顺德金华物业物业有限公司',
-              'addressName': '顺德花园五',
-              'roomId': '1栋3单元102',
+              'orderId': '201901102343242355',
+              'department': '华南师范大学党委',
+              'addressName': '第一党支部',
+              'roomId': '2栋1单元902',
               'userName': '李楠',
               'mobile': '13988776654',
+              'idCard': '430525177701055678',
               'date': '2019-03-10 11:00:00',
               'money': '600.00',
               'propertyMoney': '100.00',
@@ -150,10 +155,10 @@
             that.$router.push({path: that.$RM.PaymentSuccess, query: {type: 'party'}})
         }, 2000);
       },
-      // 跳转记录详情
-      toRecord: function(){
-        let that = this
-        that.$router.push(that.$RM.PartyDetails)
+      // 跳转缴费详情
+      toRecord(item) {
+        sessionStorage.setItem('paymentRecord', JSON.stringify(item))
+        this.$router.push(this.$RM.PartyDetails)
       }
     }
 
