@@ -16,7 +16,6 @@ import LoanOne from '@/components/loan/loanOne'
 import CharityOne from '@/components/charity/charityOne'
 import RepayMoney from '@/components/education/RepayMoney'
 import RepayMoneyItem from '@/components/education/RepayMoneyItem'
-import RepayMoneyItemSen from '@/components/education/RepayMoneyItemSen'
 import BillDetails from '@/components/education/BillDetails'
 import PartyMemberPay from '@/components/partymember/PartyMemberPay'
 import PartyMemberLog from '@/components/partymember/PartyMemberLog'
@@ -25,7 +24,6 @@ import PendingPaymentSen from '@/components/partymember/PendingPaymentSen'
 import PartyDetails from '@/components/partymember/PartyDetails'
 import VillagePay from '@/components/village/VillagePay'
 import VillagePaySen from '@/components/village/VillagePaySen'
-import VillagePayThr from '@/components/village/VillagePayThr'
 import VillageDetails from '@/components/village/VillageDetails'
 
 // 开发测试阶段使用
@@ -91,10 +89,6 @@ export default new Router({
       component: RepayMoneyItem
     },
     {
-      path: RM.RepayMoneyItemSen,
-      component: RepayMoneyItemSen
-    },
-    {
       path: RM.BillDetails,
       component: BillDetails
     },
@@ -127,10 +121,6 @@ export default new Router({
     {
       path: RM.VillagePaySen,
       component: VillagePaySen
-    },
-    {
-      path: RM.VillagePayThr,
-      component: VillagePayThr
     },
     {
       path: RM.VillageDetails,

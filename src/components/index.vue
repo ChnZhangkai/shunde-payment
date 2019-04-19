@@ -51,7 +51,7 @@ export default {
                     'name': '慈善缴费',
                     'img': '../../../static/images/charity.png',
                     'path': '/charity/charityOne'
-                },
+                }
             ]
         }
     },

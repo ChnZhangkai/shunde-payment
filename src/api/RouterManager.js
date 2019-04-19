@@ -16,7 +16,6 @@ const CharityOne = '/charity/charityOne'
 // 教育缴费
 const RepayMoney = '/education/RepayMoney';
 const RepayMoneyItem = '/education/RepayMoneyItem';
-const RepayMoneyItemSen = '/education/RepayMoneyItemSen';
 const BillDetails = '/education/BillDetails';
 // 党费缴费
 const PartyMemberPay  = '/partymember/PartyMemberPay';
@@ -27,7 +26,6 @@ const PartyDetails  = '/partymember/PartyDetails';
 // 村居缴费
 const VillagePay  = '/village/VillagePay';
 const VillagePaySen  = '/village/VillagePaySen';
-const VillagePayThr  = '/village/VillagePayThr';
 const VillageDetails  = '/village/VillageDetails';
 
 // 开发测试阶段使用
@@ -50,7 +48,6 @@ export default{
   CharityOne,
   RepayMoney,
   RepayMoneyItem,
-  RepayMoneyItemSen,
   BillDetails,
   PartyMemberPay,
   PartyMemberLog,
@@ -59,7 +56,6 @@ export default{
   PartyDetails,
   VillagePay,
   VillagePaySen,
-  VillagePayThr,
   VillageDetails,
   Index
 }
