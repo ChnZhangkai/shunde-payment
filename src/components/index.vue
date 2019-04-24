@@ -51,6 +51,11 @@ export default {
                     'name': '慈善缴费',
                     'img': '../../../static/images/charity.png',
                     'path': '/charity/charityOne'
+                },
+                {
+                    'name': '商户巡检',
+                    'img': '../../../static/images/polling.png',
+                    'path': '/polling/pollingIndex'
                 }
             ]
         }

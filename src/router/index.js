@@ -21,6 +21,12 @@ import VillagePay from '@/components/village/VillagePay'
 import VillagePaySen from '@/components/village/VillagePaySen'
 import VillageDetails from '@/components/village/VillageDetails'
 
+import PollingIndex from '@/components/polling/pollingIndex'
+import PollingMain from '@/components/polling/pollingMain'
+import PollingReport from '@/components/polling/pollingReport'
+import PollingHistory from '@/components/polling/pollingHistory'
+import PollingHistoryDetail from '@/components/polling/pollingHistoryDetail'
+
 import PaymentProtocol from '@/components/paymentProtocol'
 import PaymentSuccess from '@/components/paymentSuccess'
 import PaymentSearch from '@/components/paymentSearch'
@@ -120,6 +126,26 @@ export default new Router({
     {
       path: RM.VillageDetails,
       component: VillageDetails
+    },
+    {
+      path: RM.PollingIndex,
+      component: PollingIndex
+    },
+    {
+      path: RM.PollingMain,
+      component: PollingMain
+    },
+    {
+      path: RM.PollingReport,
+      component: PollingReport
+    },
+    {
+      path: RM.PollingHistory,
+      component: PollingHistory
+    },
+    {
+      path: RM.PollingHistoryDetail,
+      component: PollingHistoryDetail
     }
 
   ]

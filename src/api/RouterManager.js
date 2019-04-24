@@ -27,6 +27,12 @@ const PartyDetails  = '/partymember/PartyDetails';
 const VillagePay  = '/village/VillagePay';
 const VillagePaySen  = '/village/VillagePaySen';
 const VillageDetails  = '/village/VillageDetails';
+// 巡检
+const PollingIndex = '/polling/PollingIndex'
+const PollingMain = '/polling/PollingMain';
+const PollingReport = '/polling/PollingReport'
+const PollingHistory = '/polling/PollingHistory'
+const PollingHistoryDetail = '/polling/PollingHistoryDetail'
 
 // 开发测试阶段使用
 const Index = '/'
@@ -56,5 +62,10 @@ export default{
   VillagePay,
   VillagePaySen,
   VillageDetails,
+  PollingIndex,
+  PollingMain,
+  PollingReport,
+  PollingHistory,
+  PollingHistoryDetail,
   Index
 }
