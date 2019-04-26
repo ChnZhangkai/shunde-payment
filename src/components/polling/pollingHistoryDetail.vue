@@ -73,10 +73,10 @@
             </div>
             <div class="imageData">
                 <div class="imagesBox">
-                    <img class="reportFourImg" src="../../../static/images/flower.jpg" />
-                    <img class="reportFourImg" src="../../../static/images/flower2.jpg" />
-                    <img class="reportFourImg" src="../../../static/images/flower3.jpg" />
-                    <img class="reportFourImg" src="../../../static/images/flower4.jpg" />
+                    <img class="reportFourImg" src="../../../static/images/loan.png" />
+                    <img class="reportFourImg" src="../../../static/images/party.png" />
+                    <img class="reportFourImg" src="../../../static/images/village.png" />
+                    <img class="reportFourImg" src="../../../static/images/charity.png" />
                 </div>
             </div>
         </div>

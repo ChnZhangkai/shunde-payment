@@ -80,7 +80,7 @@
             </div>
             <div class="imageData">
                 <div class="imagesBox">
-                    <img class="reportFourImg" src="../../../static/images/flower.jpg" />
+                    <img class="reportFourImg" src="../../../static/images/loan.png" />
                     <img class="delImg" src="../../../static/images/del.png" @click="delImg"/>
                 </div>
                 <div class="imagesAddBox" @click="selectPhoto">
@@ -100,7 +100,7 @@
         <div class="space"></div>
     
         <div class="reportSix">
-            <button class="reportBtn">提交</button>
+            <button class="reportBtn" @click="toNext">提交</button>
         </div>
 
         <mt-actionsheet :actions="types" v-model="typesShow">
@@ -163,6 +163,7 @@ export default {
         back: function(){
             this.$router.go(-1)
         },
+        // 历史报告
         toHistory: function(){
             let that = this
             that.$router.push(that.$RM.PollingHistory)
@@ -203,6 +204,15 @@ export default {
         telPol: function(){
             let that = this
             that.pollingSelectType = '电话巡检'
+        },
+        // 提交
+        toNext: function(){
+            let that = this
+            that.$indicator.open()
+            setTimeout(() => {
+                that.$indicator.close()
+                that.$router.push(that.$RM.PollingMain)
+            }, 2000);
         }
     }
     

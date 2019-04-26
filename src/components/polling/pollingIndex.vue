@@ -3,9 +3,17 @@
         <header class="title">用户登录</header>
 
         <div class="login">
-            <mt-field class="text btm" label="账号" placeholder="请输入账号" v-model="username"></mt-field>
+            <!-- <mt-field class="text btm" label="账号" placeholder="请输入账号" v-model="username"></mt-field>
             <p class="btm"></p>
-            <mt-field class="text" label="密码" type="password" placeholder="请输入密码" v-model="password"></mt-field>
+            <mt-field class="text" label="密码" type="password" placeholder="请输入密码" v-model="password"></mt-field> -->
+            <div class="text btm">
+                <label class="loginLabel">账号</label>
+                <input class="loginText" placeholder="请输入账号" v-model="username" />
+            </div>
+            <div class="text">
+                <label class="loginLabel">密码</label>
+                <input class="loginText" placeholder="请输入密码" v-model="password"/>
+            </div>
         </div>
 
         <div class="next">
@@ -58,11 +66,22 @@ export default {
 
 .text{
     background: white;
-    height: 1.35rem;
+    font-size: .4rem;
+    padding: .3rem 0;
+    height: .5rem;
 }
 
 .btm{
     border-bottom: .01rem solid #EEEEEE;
+}
+
+.loginLabel{
+
+}
+
+.loginText{
+    border: none;
+    padding-left: .5rem;
 }
 
 .next{
